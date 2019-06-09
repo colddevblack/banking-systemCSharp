@@ -1,0 +1,59 @@
+﻿@model BancoExt.Models.ContaModel
+@{
+    ViewBag.Title = "Cadastro Contas";
+}
+
+
+<h2>Novo Cadastro de Contas</h2>
+
+
+
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Cadastrar Conta</h5>
+                </div>
+                <div class="ibox-content">
+
+@using (Html.BeginForm("CadastrarConta", "Conta"))
+{ 
+
+        <div class="col-lg-3">
+            <label for='tipocontaid' class="control-label">Tipo de Conta Selecione</label>
+            @Html.DropDownList("tipocontaid", null, "Selecione", new { @class = "form-control" })
+
+            <label for='clienteid' class="control-label">Nome do Cliente</label>
+            @Html.DropDownList("clienteid", null, "Selecione", new { @class = "form-control" })
+        </div>
+
+        <div class="col-lg-4">
+            @Html.LabelFor(obj => obj.numero)
+            @Html.TextBoxFor(obj => obj.numero, new { @class = "form-control" })
+
+            @Html.LabelFor(obj => obj.saldo)
+            @Html.TextBoxFor(obj => obj.saldo, new { @class = "form-control" })
+       </div>
+
+        <div class="col-lg-2">
+
+            @Html.LabelFor(obj => obj.agencia)
+            @Html.TextBoxFor(obj => obj.agencia, new { @class = "form-control" })
+            
+        </div>
+    
+
+        <div>
+            <input type="submit" value="Salvar" class="btn btn-warning" />
+
+        </div>
+}
+
+     </div>
+   </div>
+    </div>
+  </div>
+</div>

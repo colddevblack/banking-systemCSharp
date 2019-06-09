@@ -1,0 +1,43 @@
+﻿@model List<BancoExt.Models.ContaModel>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Cadastrar Conta</h5>
+                </div>
+                <div class="ibox-content">
+
+                    <table class="table">
+                        <tr>
+                            <td>Conta ID</td>
+                            <td>Numero Conta </td>
+                            <td>Nome Cliente</td>
+                            <td>menu editar</td>
+                            <td>menu apagar</td>
+                        </tr>
+                        @foreach (var item in Model)
+
+            {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.numero</td>
+                                 <td>@item.ClienteModel.nome</td>
+                                <td>@Html.ActionLink("Editar Conta", "EditarConta", "Conta", new { id = item.id }, new { @class = "btn btn-warning btn-sm" })</td>
+                                <td>@Html.ActionLink("Deletar Conta", "DeletarConta", "Conta", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })</td>
+                   </tr>
+                        }
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                @{
+                    ViewBag.Title = "ConsultaConta";
+                }
+
+                <h2>ConsultaConta</h2>
+

@@ -1,0 +1,54 @@
+﻿<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span>
+                        <img alt="image" class="img-circle" src="~/Images/a1.jpg" />
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">Fabio Bordin</strong>
+                            </span> <span class="text-muted text-xs block">Desenvolvedor</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="logo-element">
+                    AGLZ
+                </div>
+            </li>
+            <li class="@Html.IsSelected(controller: "Home")">
+                <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span class="nav-label" data-i18n="nav.layouts">Home</span> <span class="label label-primary pull-right">NEW</span></a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Dashboards")">
+                <a href="@Url.Action("Dashboard_1", "Dashboards")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Menu Clientes</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Dashboards", cssClass: "in")">
+                    <li class="@Html.IsSelected(action: "ConsultaClientes")"><a href="@Url.Action("ConsultaClientes", "Cliente")">Consultar/Editar Cliente</a></li>
+                    <li class="@Html.IsSelected(action: "CadastroCliente")"><a href="@Url.Action("CadastroCliente", "Cliente")">Cadastro de Novo Cliente</a></li>
+                   
+                </ul>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "Dashboards")">
+                <a href="@Url.Action("Dashboard_1", "Dashboards")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Menu de Contas</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Dashboards", cssClass: "in")">
+                    <li class="@Html.IsSelected(action: "ConsultaConta")"><a href="@Url.Action("ConsultaConta", "Conta")">Consultar/Editar Conta</a></li>
+                    <li class="@Html.IsSelected(action: "CadastrarConta")"><a href="@Url.Action("CadastrarConta", "Conta")">Cadastro Nova Conta</a></li>
+                    <li class="@Html.IsSelected(action: "ConsultaTipoConta")"><a href="@Url.Action("ConsultaTipoConta", "TipoConta")">Consultar/Editar Tipo de Contas</a></li>
+                    <li class="@Html.IsSelected(action: "CadastrarTipoConta")"><a href="@Url.Action("CadastrarTipoConta", "TipoConta")">Cadastro de Tipo de Contas</a></li>
+                 </ul>
+            </li>
+
+            <li class="@Html.IsSelected(controller: "Dashboards")">
+                <a href="@Url.Action("Dashboard_1", "Dashboards")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Menu de Transacões</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Dashboards", cssClass: "in")">
+                    <li class="@Html.IsSelected(action: "ConsultaTransacao")"><a href="@Url.Action("ConsultaTransacao", "Transacao")">Consultar Transações</a></li>
+                    <li class="@Html.IsSelected(action: "ExecutTransacao")"><a href="@Url.Action("ExecutTransacao", "Transacao")">Executar Transações</a></li>
+                    <li class="@Html.IsSelected(action: "ConsultaTipoTransacao")"><a href="@Url.Action("ConsultaTipoTransacao", "TipoTransacao")">Consultar/Editar Tipo de Transacao</a></li>
+                    <li class="@Html.IsSelected(action: "CadastrarTipoTransacao")"><a href="@Url.Action("CadastrarTipoTransacao", "TipoTransacao")">Cadastro de Tipo de Tranasacao</a></li>
+                </ul>
+            </li>
+           
+    </div>
+</nav>

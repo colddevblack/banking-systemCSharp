@@ -1,0 +1,36 @@
+﻿@model List<BancoExt.Models.TipoContaModel>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Consulta Tipo Conta</h5>
+           
+
+            <table class="table">
+                <tr>
+                    <td>Tipo Conta Id</td>
+                    <td>Nome </td>
+                    <td>menu editar</td>
+                    <td>menu apagar</td>
+                </tr>
+                @foreach (var item in Model)
+
+            {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.nomeconta</td>
+                        <td>@Html.ActionLink("Editar Tipo de Conta", "EditarTipoConta", "TipoConta", new { id = item.id }, new { @class = "btn btn-warning btn-sm" })</td>
+                        <td>@Html.ActionLink("Deletar Tipo de Conta", "DeletarTipoConta", "TipoConta", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })</td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+        </div>
+     </div>
+    </div>
+    </div>
+   

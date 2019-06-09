@@ -1,0 +1,33 @@
+﻿@model List<BancoExt.Models.ClienteModel>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table">
+            <tr>
+                <th>Cliente ID</th>
+                <th>Nome Cliente </th>
+                <th>Numero CPF do Cliente </th>
+                <th>Data de Nascimento </th>
+                <th>menu apagar</th>
+            </tr>
+
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.id</td>
+                    <td>@user.nome</td>
+                    <td>@user.cpf</td>
+                    <td>@user.dataNascimento</td>
+
+                    <td>@Html.ActionLink("DeletarCliente", "DeletarCliente", new { id = user.id }, new { @class = "btn btn-danger btn-sm" })</td>
+
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>
+
+
+
+

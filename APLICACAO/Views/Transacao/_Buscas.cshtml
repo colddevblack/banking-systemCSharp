@@ -1,0 +1,48 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <p class="h1">Lista Execução</p>
+            </div>
+            <div class="ibox-content">
+
+                <table class="table">
+                  
+
+                        <tr>
+                            <td>Transacao ID</td>
+                            <td>Nome Transacao </td>
+                            <td>Numero Conta </td>
+                            <td>Nome Cliente </td>
+                            <td>Saldo Atual </td>
+                            <td>Valor Transacao</td>
+
+                            <td>menu apagar</td>
+                        </tr>
+                        @foreach (var item in ViewBag.Transacao)
+
+                        {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.TipoTransacaoModel.nometr</td>
+                                <td>@item.ContaModel.numero</td>
+                                <td>@item.ContaModel.ClienteModel.nome</td>
+                                <td>@item.ContaModel.saldo</td>
+                                <td>@item.valor</td>
+
+                                <td>@Html.ActionLink("DeletarTransacao", "DeletarTransacao", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })</td>
+
+                              
+
+
+                            </tr>
+
+                            }
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+

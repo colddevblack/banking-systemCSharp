@@ -1,0 +1,39 @@
+﻿@model List<BancoExt.Models.TipoTransacaoModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Consulta Tipo Tranasaçoes</h2>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Lista de Tipos de Transacoes</h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table">
+                        <tr>
+                            <td>Tipo Transacao ID</td>
+                            <td>Nome Transacao </td>
+                            <td>menu editar</td>
+                            <td>menu apagar</td>
+                        </tr>
+                        @foreach (var item in Model)
+
+            {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.nometr</td>
+                                <td>@Html.ActionLink("Editar Transacao", "EditarTipoTransacao", "TipoTransacao", new { id = item.id }, new { @class = "btn btn-warning btn -sm" })</td>
+                                <td>@Html.ActionLink("Deletar Transacao", "DeletarTipoTransacao", "TipoTransacao", new { id = item.id }, new { @class = "btn btn-danger btn -sm" })</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

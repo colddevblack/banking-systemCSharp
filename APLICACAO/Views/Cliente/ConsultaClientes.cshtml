@@ -1,0 +1,119 @@
+﻿@model List<BancoExt.Models.ClienteModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<p class="h1">Lista Clientes</p>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Lista de Clientes - Jquery</h5>&ensp;
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label>Cliente</label>
+                    @Html.DropDownList("cliente", null, "-- Selecione --", htmlAttributes: new { @class = "form-control form-control-sm" })
+                </div>
+                <div class="col-sm-3">
+                    <label>CPF</label>
+                    @Html.DropDownList("cpf", null, "-- Selecione --", htmlAttributes: new { @class = "form-control form-control-sm" })
+                </div>
+               
+                <div class="col-sm-3">
+                    <label>Data nascimento</label>
+                    <input type="datetime" name="dataNascimento" id="dataNascimento" class="form-control form-control-sm"/>
+                </div>
+
+                <div class="col-lg-6">
+                    <label>&ensp;</label>
+                    <button id="btnBuscar" onclick="BuscasCliente();" class="btn btn-primary"><i class="fa fa-search"></i> Pesquisar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        @* segunda busca partial *@
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Lista Busca Cliente </h5>
+                </div>
+                <div class="ibox-content">
+                    <div id="_BuscasCliente">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/dataTables")
+    @* CHAMADA JQUERY PARA O DROPDOWN *@
+    <script type="text/javascript">
+
+        var BuscasCliente = function () {
+            //div                    //action       //parametros busca                       //parametro campo action // nome dropdown selected
+            $("#_BuscasCliente").load('_BuscasCliente?idcliente=' + $("#cliente option:selected").val() + '&idcpf=' + $("#cpf option:selected").text() + '&dataNasc=' + $("#dataNascimento").val(), function (result) {
+                $("#_BuscasCliente").html(result);
+            });
+
+        }
+    </script>
+}
+
+
+
+
+<h2>Consulta Clientes</h2>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Lista de Clientes</h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table">
+                        <tr>
+                            <td>Cliente ID</td>
+                            <td>Nome Cliente </td>
+                            <td>data de nascimento</td>
+                            <td>Endereço</td>
+                            <td>CPF</td>
+                            <td>Criação usuário</td>
+                            <td>menu editar</td>
+                            <td>menu apagar</td>
+                        </tr>
+                        @foreach (var item in Model)
+
+            {
+                            <tr>
+                                <td>@item.id</td>
+                                <td>@item.nome</td>
+                                <td>@item.dataNascimento</td>
+                                <td>@item.endereco</td>
+                                <td>@item.cpf</td>
+                                <td>@item.dataCriacao</td>
+                                <td>@Html.ActionLink("Editar Cliente", "EditarCliente", "Cliente", new { id = item.id } , new { @class = "btn btn-warning btn-sm" })</td>
+                                <td>@Html.ActionLink("Deletar Cliente", "DeletarCliente", "Cliente", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })</td>
+                            </tr>
+                        }
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
